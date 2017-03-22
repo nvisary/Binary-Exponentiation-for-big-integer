@@ -3,8 +3,8 @@
 #include "BigInt.h"
 int main() {
 	freopen("out.txt", "w", stdout);
-	std::string str1("12"); 
-	std::string str2("48");
+	std::string str1("1238398939920322390199021209"); 
+	std::string str2("4812021091930912309123091293");
 	BigInt Bint1; 
 	Bint1.getIntFromString(str1);
 	Bint1.print(); 
