@@ -60,23 +60,34 @@ bool BigInt::operator== (const BigInt& a)
 }
 BigInt BigInt::operator+(const BigInt& a)
 {
-	int bigsize; 
-	if (size > a.size || size == a.size)
+	int bigsize;
+	int smallsize; 
+	if (size > a.size || size == a.size){
+		smallsize = a.size; 
 		bigsize = size;
-	else
-		bigsize = a.size; 
-	
+	}
+	else {
+		bigsize = a.size;
+		smallsize = size; 
+	}
+			
 	BigInt temp(bigsize);	
 	for (int i = 0; i < bigsize; i++)
 	{
-		int sum = mass[i] + a.mass[i];
-		int ind = 0; 
-		while (sum > 9) {
-			ind++;
-			sum %= 10; 
-			temp.mass[i + ind]++; 
+		if (i < smallsize) {
+			int sum = mass[i] + a.mass[i];
+			int ind = 0;
+			while (sum > 9) {
+				ind++;
+				sum %= 10;
+				temp.mass[i + ind]++;
+			}
+			temp.mass[i] += sum;
+
 		}
-		temp.mass[i] += sum; 
+		else {
+			temp.mass[i] = bigsize == a.size ? a.mass[i] : mass[i]; 
+		}
 	}
 	return temp; 
 }
@@ -91,3 +102,26 @@ BigInt& BigInt::operator =(const BigInt& a)
 	return *this;
 }
 
+BigInt BigInt::operator*(const BigInt& a)
+{
+	int bigsize;
+	int smallsize;
+	if (size > a.size || size == a.size){
+		smallsize = a.size;
+		bigsize = size;
+	}
+	else {
+		bigsize = a.size;
+		smallsize = size;
+	}
+
+	BigInt temp(bigsize + smallsize);
+	for (int i = 0; i < bigsize; i++)
+	{
+		for (int j = 0; j < smallsize; j++)
+		{
+			
+		}
+	}
+	return temp;
+}

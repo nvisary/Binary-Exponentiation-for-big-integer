@@ -13,6 +13,7 @@ public:
 	void getIntFromString(std::string str);
 	void print(); 
 	BigInt operator +(const BigInt& a); 
+	BigInt operator *(const BigInt& a);
 	BigInt& operator =(const BigInt& a);
 	bool operator > (const BigInt& a); 
 	bool operator == (const BigInt&a); 
